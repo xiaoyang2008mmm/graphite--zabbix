@@ -145,8 +145,8 @@ class CHEN(object):
 
 if __name__ == '__main__':
 
-    CHEN(zabbix_url = "http://192.168.7.77:8082",
-            zabbix_user = "chenzhongyi",
-            zabbix_pass = "9595062690",
-            graphite_url = "http://192.168.7.173",
+    CHEN(zabbix_url = "http://192.168.7.7:8082",
+            zabbix_user = "ch",
+            zabbix_pass = "959",
+            graphite_url = "http://192.168.7.9",
             threads = 50)
