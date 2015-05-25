@@ -3,7 +3,7 @@
 import json
 import urllib2
 # based url and required header
-url = "http://192.168.7.77:8082/api_jsonrpc.php"
+url = "http://192.168.1.1:8082/api_jsonrpc.php"
 header = {"Content-Type":"application/json"}
 # auth user and password
 data = json.dumps(
@@ -11,8 +11,8 @@ data = json.dumps(
    "jsonrpc": "2.0",
    "method": "user.login",
    "params": {
-   "user": "chenzhongyi",
-   "password": "9595062690"
+   "user": "ch",
+   "password": "9"
 },
 "id": 0
 })
