@@ -1,0 +1,1 @@
+测试graphite抓取数据 通过zabbix报警
