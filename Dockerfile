@@ -1,26 +1,15 @@
-# VERSION 0.0.1
-# 默认ubuntu server长期支持版本，当前是12.04
-FROM centos
-# 签名啦
-MAINTAINER yongboy "chen"
-
-# 更新源，安装ssh server
-RUN  yum -y  update
-RUN yum install -y openssh-server
-RUN mkdir -p /var/run/sshd
-
-# 设置root ssh远程登录密码为111111
-RUN echo "root:111111" | chpasswd 
-
-
-
-
-
-# 容器需要开放SSH 22端口
+#Dockerfile
+FROM centos6-base
+MAINTAINER zhou_mfk <zhou_mfk@163.com>
+RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
+RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
+RUN sed -ri 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
+RUN mkdir -p /root/.ssh && chown root.root /root && chmod 700 /root/.ssh
 EXPOSE 22
-
-# 容器需要开放Tomcat 8080端口
-EXPOSE 8080
-
-# 设置Tomcat7初始化运行，SSH终端服务器作为后台运行
-ENTRYPOINT service tomcat7 start && /usr/sbin/sshd -D
+RUN echo 'root:redhat' | chpasswd
+RUN yum install -y yum-priorities && rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm && rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+RUN yum install tar gzip gcc vim wget -y
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+CMD /usr/sbin/sshd -D
+#End
