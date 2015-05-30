@@ -1,5 +1,5 @@
 #Dockerfile
-FROM centos6
+FROM index.tenxcloud.com/tenxcloud/centos
 MAINTAINER zhou_mfk <zhou_mfk@163.com>
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
