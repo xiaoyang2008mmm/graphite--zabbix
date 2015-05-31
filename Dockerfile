@@ -1,4 +1,4 @@
-FROM index.tenxcloud.com/tenxcloud/centos
+FROM centos:6.6
 RUN mkdir -p /data/1111111111111111111111111111111111111111
 RUN echo 'root:111111' | chpasswd
 
