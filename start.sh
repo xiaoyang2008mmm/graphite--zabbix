@@ -2,10 +2,10 @@
 
 __create_user() {
 # Create a user to SSH into as.
-useradd user
-SSH_USERPASS=newpass
-echo -e "$SSH_USERPASS\n$SSH_USERPASS" | (passwd --stdin user)
-echo ssh user password: $SSH_USERPASS
+useradd test
+SSH_USERPASS=111111
+echo -e "$SSH_USERPASS\n$SSH_USERPASS" | (passwd --stdin test)
+echo ssh test password: $SSH_USERPASS
 }
 
 # Call all functions
